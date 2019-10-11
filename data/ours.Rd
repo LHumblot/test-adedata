@@ -1,1 +1,86 @@
-XG5hbWV7b3Vyc30KXGFsaWFze291cnN9Clxkb2NUeXBle2RhdGF9Clx0aXRsZXtBIHRhYmxlIG9mIFF1YWxpdGF0aXZlIFZhcmlhYmxlc30KXHVzYWdle2RhdGEob3Vycyl9ClxkZXNjcmlwdGlvbnsKICBUaGUgXGNvZGV7b3Vyc30gKGJlYXJzKSBkYXRhIGZyYW1lIGhhcyAzOCByb3dzLCBhcmVhcyBvZiB0aGUgIkludmVudGFpcmUgTmF0aW9uYWwgRm9yZXN0aWVyIiwgYW5kIDEwIGNvbHVtbnMuCn0KXGZvcm1hdHsKICBUaGlzIGRhdGEgZnJhbWUgY29udGFpbnMgdGhlIGZvbGxvd2luZyBjb2x1bW5zOgogIFxlbnVtZXJhdGV7CiAgICBcaXRlbSBhbHRpdDogaW1wb3J0YW5jZSBvZiB0aGUgYWx0aXR1ZGluYWwgYXJlYSBpbmhhYml0ZWQgYnkgYmVhcnMsCiAgICBhIGZhY3RvciB3aXRoIGxldmVsczogCiAgICBcaXRlbWl6ZXsKICAgICAgXGl0ZW0gXGNvZGV7MX0gbGVzcyB0aGFuIDUwXCUgb2YgdGhlIGFyZWEgYmV0d2VlbiA4MDAgYW5kIDIwMDAgbWV0ZXJzIAogICAgICBcaXRlbSBcY29kZXsyfSBiZXR3ZWVuIDUwIGFuZCA3MFwlIAogICAgICBcaXRlbSBcY29kZXszfSBtb3JlIHRoYW4gNzBcJX0KICAgIAogICAgXGl0ZW0gZGVuaXY6IGltcG9ydGFuY2Ugb2YgdGhlIGF2ZXJhZ2UgdmFyaWF0aW9uIGluIGxldmVsIGJ5IHNxdWFyZSBvZiA1MCBrbTIsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBsZXNzIHRoYW4gNzAwbQogICAgICBcaXRlbSBcY29kZXsyfSBiZXR3ZWVuIDcwMCBhbmQgOTAwIG0gCiAgICAgIFxpdGVtIFxjb2RlezN9IG1vcmUgdGhhbiA5MDAgbSB9CiAgICAKICAgIFxpdGVtIGNsb2lzbzogcGFydGl0aW9uaW5nIG9mIHRoZSBtYXNzaWYsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBhIGdyZWF0IHZhbGxleSBvciBhIHJpZGdlIGlzb2xhdGVzIGF0IGxlYXN0IGEgcXVhcnRlciBvZiB0aGUgbWFzc2lmIAogICAgICBcaXRlbSBcY29kZXsyfSBsZXNzIHRoYW4gYSBxdWFydGVyIG9mIHRoZSBtYXNzaWYgaXMgaXNvbGF0ZWQgCiAgICAgIFxpdGVtIFxjb2RlezN9IHRoZSBtYXNzaWYgaGFzIG5vIHNwbGl0fQogICAgCiAgICBcaXRlbSBkb21haW46IGltcG9ydGFuY2Ugb2YgdGhlIG5hdGlvbmFsIGZvcmVzdHMgb24gY29udGFjdCB3aXRoIHRoZSBtYXNzaWYsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBsZXNzIHRoYW4gNDAwICBrbTIgCiAgICAgIFxpdGVtIFxjb2RlezJ9IGJldHdlZW4gNDAwIGFuZCAxMDAwICBrbTIgCiAgICAgIFxpdGVtIFxjb2RlezN9IG1vcmUgdGhhbiAxMDAwICBrbTIgfQogICAgCiAgICBcaXRlbSBib2lzZTogcmF0ZSBvZiBhZmZvcmVzdGF0aW9uLCBhIGZhY3RvciB3aXRoIGxldmVsczogCiAgICBcaXRlbWl6ZXsKICAgICAgXGl0ZW0gXGNvZGV7MX0gbGVzcyB0aGFuIDMwXCUgCiAgICAgIFxpdGVtIFxjb2RlezJ9IGJldHdlZW4gMzAgYW5kIDUwXCUgCiAgICAgIFxpdGVtIFxjb2RlezN9IG1vcmUgdGhhbiA1MFwlIH0KICAgIAogICAgXGl0ZW0gaGV0cmE6IGltcG9ydGFuY2Ugb2YgcGxhbnRhdGlvbnMgYW5kIG1peGVkIGZvcmVzdHMsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBsZXNzIHRoYW4gNVwlIAogICAgICBcaXRlbSBcY29kZXsyfSBiZXR3ZWVuIDUgYW5kIDEwXCUgCiAgICAgIFxpdGVtIFxjb2RlezN9IG1vcmUgdGhhbiAxMFwlIG9mIHRoZSBtYXNzaWYgfQogICAgCiAgICBcaXRlbSBmYXZvcjogaW1wb3J0YW5jZSBvZiBmYXZvcmFibGUgZm9yZXN0cywgcGxhbnRhdGlvbnMsIG1peGVkIGZvcmVzdHMsIGZpciBwbGFudGF0aW9ucywgYSBmYWN0b3Igd2l0aCBsZXZlbHM6IAogICAgXGl0ZW1pemV7CiAgICAgIFxpdGVtIFxjb2RlezF9IGxlc3MgdGhhbiA1XCUgCiAgICAgIFxpdGVtIFxjb2RlezJ9IGJldHdlZW4gNSBhbmQgMTBcJSAKICAgICAgXGl0ZW0gXGNvZGV7M30gbW9yZSB0aGFuIDEwXCUgb2YgdGhlIG1hc3NpZiB9CiAgICAKICAgIFxpdGVtIGluZXhwOiBpbXBvcnRhbmNlIG9mIHVud29ya2VkIGZvcmVzdHMsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBsZXNzIHRoYW4gNFwlIAogICAgICBcaXRlbSBcY29kZXsyfSBiZXR3ZWVuIDQgYW5kIDhcJSAKICAgICAgXGl0ZW0gXGNvZGV7M30gbW9yZSB0aGFuIDhcJSBvZiB0aGUgdG90YWwgYXJlYSB9CiAgICAKICAgIFxpdGVtIGNpdGF0OiBwcmVzZW5jZSBvZiB0aGUgYmVhciBiZWZvcmUgaXRzIGRpc2FwcGVhcmFuY2UsIGEgZmFjdG9yIHdpdGggbGV2ZWxzOiAKICAgIFxpdGVtaXplewogICAgICBcaXRlbSBcY29kZXsxfSBubyBxdW90YXRpb24gc2luY2UgMTg0MCAKICAgICAgXGl0ZW0gXGNvZGV7Mn0gMSB0byAzIHF1b3RhdGlvbnMgYmVmb3JlIDE5MDAgYW5kIG5vbmUgYWZ0ZXIgCiAgICAgIFxpdGVtIFxjb2RlezN9IDQgcXVvdGF0aW9ucyBiZWZvcmUgMTkwMCBhbmQgbm9uZSBhZnRlciAKICAgICAgXGl0ZW0gXGNvZGV7NH0gYXQgbGVhc3QgNCBxdW90YXRpb25zIGJlZm9yZSAxOTAwIGFuZCBhdCBsZWFzdCAxIHF1b3RhdGlvbiBiZXR3ZWVuIDE5MDAgYW5kIDE5NDAgfQogICAgCiAgICBcaXRlbSBkZXBhcnQ6IGRpc3RyaWN0LCBhIGZhY3RvciB3aXRoIGxldmVsczogCiAgICBcaXRlbWl6ZXsKICAgICAgXGl0ZW0gXGNvZGV7QUhQfSBBbHBlcy1kZS1IYXV0ZS1Qcm92ZW5jZSAKICAgICAgXGl0ZW0gXGNvZGV7QU19IEFscGVzLU1hcml0aW1lcyAKICAgICAgXGl0ZW0gXGNvZGV7RH0gRHLDtG1lIAogICAgICBcaXRlbSBcY29kZXtIUH0gSGF1dGVzLUFscGVzIAogICAgICBcaXRlbSBcY29kZXtIU30gSGF1dGUtU2F2b2llIAogICAgICBcaXRlbSBcY29kZXtJfSBJc8OocmUgCiAgICAgIFxpdGVtIFxjb2Rle1N9IFNhdm9pZX0KICB9Cn0KXHNvdXJjZXsKIEVyb21lLCBHLiAoMTk4OSkgXGVtcGh7TCdvdXJzIGJydW4gZGFucyBsZXMgQWxwZXMgZnJhbsOnYWlzZXMuIEhpc3RvcmlxdWUgZGUgc2EgZGlzcGFyaXRpb259LgogQ2VudHJlIE9ybml0aG9sb2dpcXVlIFJow7RuZS1BbHBlcywgVmlsbGV1cmJhbm5lLiAxMjAgcC4KfQpcZXhhbXBsZXN7CmRhdGEob3VycykKfQpca2V5d29yZHtkYXRhc2V0c30K
+\name{ours}
+\alias{ours}
+\docType{data}
+\title{A table of Qualitative Variables}
+\usage{data(ours)}
+\description{
+  The \code{ours} (bears) data frame has 38 rows, areas of the "Inventaire National Forestier", and 10 columns.
+}
+\format{
+  This data frame contains the following columns:
+  \enumerate{
+    \item altit: importance of the altitudinal area inhabited by bears,
+    a factor with levels: 
+    \itemize{
+      \item \code{1} less than 50\% of the area between 800 and 2000 meters 
+      \item \code{2} between 50 and 70\% 
+      \item \code{3} more than 70\%}
+    
+    \item deniv: importance of the average variation in level by square of 50 km2, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 700m
+      \item \code{2} between 700 and 900 m 
+      \item \code{3} more than 900 m }
+    
+    \item cloiso: partitioning of the massif, a factor with levels: 
+    \itemize{
+      \item \code{1} a great valley or a ridge isolates at least a quarter of the massif 
+      \item \code{2} less than a quarter of the massif is isolated 
+      \item \code{3} the massif has no split}
+    
+    \item domain: importance of the national forests on contact with the massif, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 400  km2 
+      \item \code{2} between 400 and 1000  km2 
+      \item \code{3} more than 1000  km2 }
+    
+    \item boise: rate of afforestation, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 30\% 
+      \item \code{2} between 30 and 50\% 
+      \item \code{3} more than 50\% }
+    
+    \item hetra: importance of plantations and mixed forests, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 5\% 
+      \item \code{2} between 5 and 10\% 
+      \item \code{3} more than 10\% of the massif }
+    
+    \item favor: importance of favorable forests, plantations, mixed forests, fir plantations, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 5\% 
+      \item \code{2} between 5 and 10\% 
+      \item \code{3} more than 10\% of the massif }
+    
+    \item inexp: importance of unworked forests, a factor with levels: 
+    \itemize{
+      \item \code{1} less than 4\% 
+      \item \code{2} between 4 and 8\% 
+      \item \code{3} more than 8\% of the total area }
+    
+    \item citat: presence of the bear before its disappearance, a factor with levels: 
+    \itemize{
+      \item \code{1} no quotation since 1840 
+      \item \code{2} 1 to 3 quotations before 1900 and none after 
+      \item \code{3} 4 quotations before 1900 and none after 
+      \item \code{4} at least 4 quotations before 1900 and at least 1 quotation between 1900 and 1940 }
+    
+    \item depart: district, a factor with levels: 
+    \itemize{
+      \item \code{AHP} Alpes-de-Haute-Provence 
+      \item \code{AM} Alpes-Maritimes 
+      \item \code{D} Drôme 
+      \item \code{HP} Hautes-Alpes 
+      \item \code{HS} Haute-Savoie 
+      \item \code{I} Isère 
+      \item \code{S} Savoie}
+  }
+}
+\source{
+ Erome, G. (1989) \emph{L'ours brun dans les Alpes françaises. Historique de sa disparition}.
+ Centre Ornithologique Rhône-Alpes, Villeurbanne. 120 p.
+}
+\examples{
+data(ours)
+}
+\keyword{datasets}
