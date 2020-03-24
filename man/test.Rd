@@ -1,4 +1,4 @@
-dds
+free
 \name{ours}
 \alias{ours}
 \docType{data}
