@@ -1,4 +1,4 @@
-hehe
+kyky
 \name{ours}
 \alias{ours}
 \docType{data}
