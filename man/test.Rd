@@ -1,4 +1,4 @@
-hoho
+hehe
 \name{ours}
 \alias{ours}
 \docType{data}
