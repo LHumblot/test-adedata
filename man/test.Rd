@@ -1,4 +1,4 @@
-gym
+fixee
 \name{ours}
 \alias{ours}
 \docType{data}
