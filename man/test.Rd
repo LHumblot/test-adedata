@@ -1,4 +1,4 @@
-banane
+pomme
 \name{ours}
 \alias{ours}
 \docType{data}
