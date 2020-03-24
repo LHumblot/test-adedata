@@ -1,3 +1,4 @@
+banane
 \name{ours}
 \alias{ours}
 \docType{data}
