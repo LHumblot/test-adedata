@@ -1,4 +1,4 @@
-poire
+gym
 \name{ours}
 \alias{ours}
 \docType{data}
