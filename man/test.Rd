@@ -1,4 +1,4 @@
-fixee
+hoho
 \name{ours}
 \alias{ours}
 \docType{data}
