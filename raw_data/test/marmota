@@ -1,0 +1,387 @@
+config.php
+
+<?php if (!defined('DATATABLES')) exit(); // Ensure being used in DataTables env.
+
+/*
+ * DB connection script for Editor
+ * Created by http://editor.datatables.net/generator
+ */
+
+// Enable error reporting for debugging (remove for production)
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+/*
+ * Edit the following with your database connection options
+ */
+$sql_details = array(
+	"type" => "Postgres",
+	"user" => "marmota_rw",
+	"pass" => "z54jQ3Nc",
+	//"host" => "umr5558-ecureuils.univ-lyon1.fr",
+	"host" => "localhost",
+	"port" => "5432",
+	"db"   => "marmota",
+	"dsn"  => ""
+);
+
+table.capture.php
+<?php
+
+/*
+ * Editor server script for DB table territory
+ * Created by http://editor.datatables.net/generator
+ */
+
+// DataTables PHP library and database connection
+include( "../../php/lib/DataTables.php" );
+
+
+// Alias Editor classes so they are easy to use
+use
+	DataTables\Editor,
+	DataTables\Editor\Field,
+	DataTables\Editor\Format,
+	DataTables\Editor\Mjoin,
+	DataTables\Editor\Options,
+	DataTables\Editor\Upload,
+	DataTables\Editor\Validate,
+	DataTables\Editor\ValidateOptions;
+
+
+
+// Build our Editor instance and process the data coming from _POST
+Editor::inst( $db, 'capture', 'id' )
+	->fields(
+		//
+		//capture
+		//
+		Field::inst( 'capture.protocol_id' )
+		->options( Options::inst()
+			->table( 'protocol' )
+			->value( 'id' )
+			->label( 'name' )
+		),
+		Field::inst( 'protocol.name' ),
+		Field::inst( 'protocol.id' ),
+		Field::inst( 'study_site.name' )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A study site is required' )
+			) ),
+		Field::inst( 'capture.individual_id' ),
+		Field::inst( 'capture.handler_id' )
+            ->options( Options::inst()
+                ->table( 'handler' )
+                ->value( 'id' )
+                ->label( array('first_name', 'last_name') )
+            )
+			->validator( Validate::dbValues() )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'An handler is required' )
+			) )
+			,
+		Field::inst( 'handler.first_name' ),
+		Field::inst( 'handler.last_name' ),
+		Field::inst( 'capture.territory_id' )
+			->options( Options::inst()
+				->table( 'territory' )
+				->value( 'id' )
+				->label( 'field_id' )
+			)
+			->validator( Validate::dbValues() )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A territory is required' )
+			) ),
+		Field::inst( 'territory.field_id' ),
+		Field::inst( 'capture.date' )
+			->validator( Validate::dateFormat( 'Y-m-d' ) )
+			->getFormatter( Format::dateSqlToFormat( 'Y-m-d' ) )
+			->setFormatter( Format::dateFormatToSql( 'Y-m-d' ) )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A date is required' )
+			) ),
+		Field::inst( 'capture.field_id' )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A field_id is required' )
+			) ),
+		Field::inst( 'capture.capture_time' )
+			->validator( Validate::dateFormat('G:i') )//->validator( Validate::dateFormat('G:i:s') )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		Field::inst( 'capture.release_time' )
+			->validator( Validate::dateFormat('G:i') )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		Field::inst( 'capture.transponder' )
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A transponder is required' )
+			) )*/,
+		Field::inst( 'capture.eartag_left' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A eartag left is required' )
+			) )*/,
+		Field::inst( 'capture.eartag_right' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A eartag right is required' )
+			) )*/,
+		Field::inst( 'capture.eartag_color' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A eartag color is required' )
+			) )*/,
+		Field::inst( 'capture.ear' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A ear is required' )
+			) )*/,
+		Field::inst( 'capture.new_individual' )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'this info is required' )
+			) ),
+		Field::inst( 'capture.capture_file_id' )
+			->upload( Upload::inst( $_SERVER['DOCUMENT_ROOT'].'/marmota/upload/capture/__ID__.__EXTN__' )
+				->db( 'capture_files', 'id', array(
+					'filename'    => Upload::DB_FILE_NAME,
+					'filesize'    => Upload::DB_FILE_SIZE,
+					'web_path'    => Upload::DB_WEB_PATH,
+					'system_path' => Upload::DB_SYSTEM_PATH
+				) )
+				->dbClean( function ( $data ) {
+					// Remove the files from the file system
+					for ( $i=0, $ien=count($data) ; $i<$ien ; $i++ ) {
+						unlink( $data[$i]['system_path'] );
+					}
+					// Have Editor remove the rows from the database
+					return true;
+				} )
+				->validator( Validate::fileSize( 700000, 'Files must be smaller that 500K' ) )
+				->validator( Validate::fileExtensions( array( 'pdf' ), "Please upload a pdf file" ) )
+			)
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A capture file is required' )
+			) ),
+		Field::inst( 'capture.dye' )
+				->setFormatter( function ($val, $data, $field) {
+					if ($val == "") return null;
+					else return $val;
+				}),
+		Field::inst( 'capture.comment' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		//
+		//individual
+		//
+		Field::inst( 'individual.id' )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'An individual id is required' )
+			) ),
+		Field::inst( 'individual.sex' )
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'Sex is required' )
+			) ),
+		Field::inst( 'individual.death_date' )
+			->validator( Validate::dateFormat( 'Y-m-d' ) )
+			->getFormatter( Format::dateSqlToFormat( 'Y-m-d' ) )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			->setFormatter( Format::dateFormatToSql( 'Y-m-d' ) ),
+		Field::inst( 'individual.death_certainty' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		
+		Field::inst( 'individual.litter_obs_id' )
+		->setFormatter( function ($val, $data, $field) {
+			return null;
+		}),
+		/*->options( Options::inst()
+			->table( 'litter_obs' )
+			->value( 'id' )
+			->label( 'field_id' )
+		),
+		Field::inst( 'litter_obs.id' ),
+		Field::inst( 'litter_obs.field_id' ),*/
+		Field::inst( 'individual.comment' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+
+		//
+		//biometry
+		//
+		Field::inst( 'biometry.m_body' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		Field::inst( 'biometry.lg_tibia' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		Field::inst( 'biometry.dag' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		Field::inst( 'biometry.comment' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			}),
+		//
+		//status
+		//
+		Field::inst( 'status.age_obs' )
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'An age obs is required' )
+			) )*/,
+		Field::inst( 'status.reproductive_status' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A reproductive status is required' )
+			) )*/,
+		Field::inst( 'status.social_status' )
+			/*
+			->validator( Validate::notEmpty(ValidateOptions::inst()
+				->message( 'A social status is required' )
+			) )*/,
+		Field::inst( 'status.comment' )
+			->setFormatter( function ($val, $data, $field) {
+				if ($val == "") return null;
+				else return $val;
+			})//,
+		//
+		//sample
+		//
+		/*
+		Field::inst( 'sample.box_number' )
+		->setFormatter( function ($val, $data, $field) {
+			print_r($field);
+		})
+		
+		->validator( Validate::notEmpty(ValidateOptions::inst()
+			->message( 'A cca is required' )
+		) )*/
+	)
+	
+	->leftJoin( 'handler', 'handler.id', '=', 'capture.handler_id' )
+	->leftJoin( 'individual', 'individual.id', '=', 'capture.individual_id' )
+	->leftJoin( 'territory', 'territory.id', '=', 'capture.territory_id' )
+	->leftJoin( 'biometry', 'biometry.capture_id' , '=', 'capture.id' )
+	->leftJoin( 'status', 'status.capture_id' , '=', 'capture.id' )
+	->leftJoin( 'protocol', 'protocol.id', '=', 'capture.protocol_id' )
+	//->leftJoin( 'sample', 'sample.sample_type_id' , '=', 'sample_type.id' )
+	->leftJoin( 'study_site', 'territory.study_site_id' , '=', 'study_site.id' )
+	//->leftJoin( 'sample', 'capture.id' , '=', 'sample.origin_capture_id' )
+	//->leftJoin( 'litter_obs', 'litter_obs.id' , '=', 'individual.litter_obs_id' )
+
+
+	->on( 'preCreate', function ( $editor, $values) {
+		//print_r($values);
+		
+		new_individual( $editor->db(), $values);
+	
+    } )
+	
+	->on( 'postCreate', function ( $editor, $id, $values, $row ) {
+		//print_r($values);
+		$db = $editor->db();
+		
+		rename($_SERVER['DOCUMENT_ROOT'].'/marmota/upload/capture/'.$values['capture']['capture_file_id'].'.pdf', $_SERVER['DOCUMENT_ROOT'].'/marmota/upload/capture/'.$values['capture']['field_id'].'.pdf');
+
+		$db->update( 'capture_files', ['filename' => $values['capture']['field_id'].'.pdf'],['id' => $values['capture']['capture_file_id']] );
+		
+		$db->update( 'capture_files', ['web_path' => '/marmota/upload/capture/'.$values['capture']['field_id'].'.pdf'],['id' => $values['capture']['capture_file_id']] );
+
+		$db->update( 'capture_files', ['system_path' => '/var/www/marmota/upload/capture/'.$values['capture']['field_id'].'.pdf'],['id' => $values['capture']['capture_file_id']] );
+
+		
+		if(isset($values['sample'])){
+			//print_r($values['sample_numbers']);
+			foreach ($values['sample'] as &$toto) {
+				foreach ($toto as &$sample) {
+					$sample['handler_id']=$values['capture']['handler_id'];
+					$sample['origin_capture_id']=$id;
+					$sample['sampling_id']=$values['sample_numbers']['sampling_id_before'].$values['sample_numbers']['sampling_id'];
+					$sample['sample_time']=$values['sample_numbers']['sample_time'];
+					$sample = array_filter($sample);
+					$sample['empty']='NO';
+					if (isset($sample['box_number_before'])){
+						$sample['box_number']=$sample['box_number_before'].$sample['box_number'].$sample['box_number_after'];
+						unset($sample['box_number_before']);
+						unset($sample['box_number_after']);
+					}
+					//print_r($sample);
+					$result = $db->insert( 'sample', $sample);
+				}
+			}
+		}
+    } )
+
+	->process( $_POST )
+	->json();
+
+
+	function new_individual( $db, $values ) {
+		if ($values['capture']['new_individual'] == 1 && $values['individual']['id']){
+
+			$individual_exist = $db
+    			->select( 'individual', ['id'], ['id' => $values['individual']['id']] )
+    			->fetchAll();
+			
+			if (!$individual_exist){
+
+				if ($values['individual']['death_date']){$individual_death_date = $values['individual']['death_date'];} else {$individual_death_date = null;}
+				if ($values['individual']['death_certainty']){$individual_death_certainty = $values['individual']['death_certainty'];} else {$individual_death_certainty = null;}
+
+
+				$new_individual_data = array(
+					'id' => $values['individual']['id'],
+					'sex'    =>  $values['individual']['sex'],
+					'death_date'    =>  $individual_death_date,
+					'death_certainty'    =>  $individual_death_certainty,
+					//'death_certainty'    =>  $values['individual']['death_certainty'],
+				);
+
+				$result = $db->insert( 'individual', $new_individual_data);
+			}
+
+		}
+		//print_r($result);
+	}
+
